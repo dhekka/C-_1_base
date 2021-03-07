@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,8 @@ namespace C_1_base
 
         public static double SquerOfTrungle(uint a, uint b)
         {
-            throw new NotImplementedException();
+            double square = (a * b) / 2.0;
+            return square;
         }
         #endregion
 
@@ -31,7 +33,9 @@ namespace C_1_base
 
         public static bool isTrungle(uint a, uint b, uint c)
         {
-            throw new NotImplementedException();
+            bool trungle = false;
+            if (a <= b + c && b <= a + c && c <= b + a) trungle = true;
+            return trungle;
         }
         #endregion
 
@@ -43,7 +47,9 @@ namespace C_1_base
 
         public static int Arifmetika(int a, int b)
         {
-            throw new NotImplementedException();
+            int sum = a + b, sub = Math.Abs(a - b);
+            if ((a > 0 && b > 0) || (a < 0 && b < 0)) return sum;
+            return sub;
         }
         #endregion
 
@@ -55,19 +61,24 @@ namespace C_1_base
 
         public static int Fuc(int a)
         {
-            throw new NotImplementedException();
+            if (a == 0)
+                return 1;
+            return a * Fuc(a - 1);
         }
         #endregion
 
 
         #region Задача 5
         /*
-         * На вход подается число n, необходимо создать массив длинной n и проинициализровать его значениями n, n-1 ... 1 (гарантируется, что n >= 1)
+         * На вход подается число n, необходимо создать массив длинной n и проинициализрSовать его значениями n, n-1 ... 1 (гарантируется, что n >= 1)
         */
 
         public static int[] ArrayCreate(int n)
         {
-            throw new NotImplementedException();
+            int[] Array = new int[n];
+            for (int i = 0; i < n; i++)
+                Array[i] = n - i;
+            return Array;
         }
         #endregion
 
@@ -77,9 +88,16 @@ namespace C_1_base
          * На вход подается массив чисел, необходимо вернуть индекс первого вхождения наибольшего элемента массива
         */
 
+
         public static int MaxSearch(int[] array)
         {
-            throw new NotImplementedException();
+            int Max = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > Max)
+                    Max = i;
+            }
+            return Max;
         }
         #endregion
 
@@ -91,7 +109,10 @@ namespace C_1_base
 
         public static int[] ArrayCopy(int[] array)
         {
-            throw new NotImplementedException();
+            int[] array2 = new int[array.Length];
+            for (int i = 0; i < array.Length; i++)
+                array2[i] = array[i];
+            return array2;
         }
         #endregion
 
@@ -103,7 +124,10 @@ namespace C_1_base
 
         public static int Fibonachi(int n)
         {
-            throw new NotImplementedException();
+            if (n == 1 || n == 0) 
+                return 1;
+            else 
+                return Fibonachi(n - 1) + Fibonachi(n - 2);
         }
         #endregion
 
@@ -116,7 +140,17 @@ namespace C_1_base
 
         public static int HardArray(int[] intput, out int[] output)
         {
-            throw new NotImplementedException();
+            int Max = intput[0];
+            int[] intput2 = new int[intput.Length];
+            output = intput2;
+            for (int i = 0; i < intput.Length; i++)
+                {
+                    if (intput[i] > Max)
+                        Max = intput[i];
+                }
+            for (int j = 0; j < intput.Length; j++)
+                output[j] = intput[j];
+            return Max;
         }
         #endregion
 
@@ -131,7 +165,13 @@ namespace C_1_base
 
         public static void Fight(ref int health1, int power1, ref int health2, int power2)
         {
-            throw new NotImplementedException();
+            while(true)
+            {
+                if (health1 < 1 || health2 < 1)
+                    break;
+                health1 = health1 - power2;
+                health2 = health2 - power1;
+            }
         }
         #endregion
     }
